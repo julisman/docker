@@ -1,0 +1,7 @@
+mongodb:
+ 
+  volumes:
+    - ./var/mongodb.data:/data/db
+  image: mongo:3.2
+  ports:
+    - "27017:27017"
