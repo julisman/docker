@@ -35,6 +35,9 @@ RUN npm install -g nodemon
 RUN npm install -g forever
 RUN npm install pm2 -g
 
+ENV dir /app
+WORKDIR ${dir}
+
 
 
 
