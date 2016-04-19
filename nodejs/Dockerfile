@@ -4,6 +4,12 @@ MAINTAINER agung.julisman@yahoo.com
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
+# change time zone to asia jakarta
+RUN rm /etc/timezone \
+       && echo "Asia/Jakarta" > /etc/timezone \
+       && chmod 644 /etc/timezone \
+       && dpkg-reconfigure --frontend noninteractive tzdata
+
 # update
 RUN apt-get update -y
 
