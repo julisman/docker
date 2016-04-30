@@ -6,5 +6,5 @@ nginx:
         - "80:80"
         - "443:443"
     volumes:
-        - /var/www/html:/var/www/html:rw
-        - /mnt/docker/nginx/conf.d:/etc/nginx/conf.d:rw
+        - /var/www/html:/var/www/html
+        - /mnt/docker/nginx/conf.d:/etc/nginx/conf.d
