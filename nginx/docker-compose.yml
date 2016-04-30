@@ -1,0 +1,10 @@
+nginx:
+    container_name: nginx
+    image: secret06/nginx
+    restart: always
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+        - /var/www:/var/www:rw
+        - /mnt/docker/nginx/conf.d:/etc/nginx/conf.d:rw
