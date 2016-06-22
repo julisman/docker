@@ -20,10 +20,10 @@ RUN apt-get install -y curl git
 RUN apt-get clean
 
 # set environment
-# we use node v5.1.0 as default
+# we use node v6.0.0 as default
 
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 5.1.0
+ENV NODE_VERSION 6.0.0
 
 # Install nvm with node and npm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash \
@@ -38,7 +38,6 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 #you can pick this one process manager
 RUN npm install -g nodemon
-RUN npm install -g forever
 RUN npm install pm2 -g
 
 ENV dir /app
