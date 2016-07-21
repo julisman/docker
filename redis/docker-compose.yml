@@ -1,7 +1,7 @@
 redis:
    container_name: redis
    image: ralali/redis-devel
-   restart: always
+  # restart: always
    volumes:
        - /mnt/docker/redis/etc:/usr/local/etc/redis:rw
    command: redis-server /usr/local/etc/redis/redis.conf
