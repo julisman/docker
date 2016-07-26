@@ -36,7 +36,7 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh
 ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-#you can pick this one process manager
+#you can pick this one for process manager
 RUN npm install -g nodemon
 RUN npm install pm2 -g
 
