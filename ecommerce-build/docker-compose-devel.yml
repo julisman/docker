@@ -1,7 +1,7 @@
 
 api:
   container_name: ecommerce2
-  image:  ecommercebuild:0.1
+  image:  secret06/ecommercebuild:0.1
   command : pm2 start app.js --no-daemon --watch -i max --max-memory-restart 3G --merge-logs --log-date-format="YYYY-MM-DD HH:mm Z"
   restart: always
   ports:
