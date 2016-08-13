@@ -1,4 +1,4 @@
 website/.env
 website/Dockerfile
 website/config.js
-website/constats.php
+website/constants.php
