@@ -18,7 +18,7 @@ ADD hhvm.ini /etc/hhvm/hhvm.ini
 ADD php.ini /etc/hhvm/php.ini
 ADD supervisor-hhvm.sh /scripts/supervisor-hhvm.sh
 
-# Starts HHVM for the first time
+# Make sure that our web server will restart automatically when the server is rebooted
 RUN update-rc.d hhvm defaults
 
 # Exposing HHVM-FastCGI port
