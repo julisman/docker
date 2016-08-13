@@ -1,0 +1,27 @@
+ralali_data4:
+  image: website:0.1
+
+ralali_web_nginx4:
+  image: nginx2:0.1
+  ports:
+    - "8000:80"
+  volumes_from:
+    - ralali_data4
+  links:
+      - ralali_hhvm
+
+ralali_hhvm:
+  image: ralali/hhvm
+  command: hhvm --mode server --config /etc/hhvm/hhvm.ini
+  volumes:
+    - .:/var/www/html
+    - ./docker/hhvm.ini:/etc/hhvm/hhvm.ini
+    - ./docker/php.ini:/etc/hhvm/php.ini
+    - ./docker/supervisor-hhvm.sh:/scripts/supervisor-hhvm.sh
+  extra_hosts:
+    - "db.ralali.dev:192.168.0.51"
+    - "elastic.ralali.dev:192.168.0.51"
+    - "api.ralali.dev:192.168.0.51"
+    - "static.ralali.dev:192.168.0.51"
+
+
