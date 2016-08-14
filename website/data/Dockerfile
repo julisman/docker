@@ -1,9 +1,10 @@
 FROM ubuntu:trusty
 
-MAINTAINER agung.julisman@yahoo.com
+MAINTAINER  Agung Julisman <agung.julisman@yahoo.com>
 
 ENV USER sidikriyan
 ENV PASSWORD ralali2016
+ENV VERSION
 
 # update
 RUN apt-get update && apt-get install -y \
@@ -18,7 +19,6 @@ RUN  php5enmod mcrypt
 
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-#RUN git clone https://sidikriyan:ralali2016@github.com/ralali/website.git /website/
 RUN git clone https://${USER}:${PASSWORD}@github.com/ralali/website.git /website/
 
 RUN mkdir -p /var/www/php/website
