@@ -1,6 +1,12 @@
 FROM nginx
 MAINTAINER agung <agung.julisman@yahoo.com>
 
+# change time zone to asia jakarta
+RUN rm /etc/timezone \
+       && echo "Asia/Jakarta" > /etc/timezone \
+       && chmod 644 /etc/timezone \
+       && dpkg-reconfigure --frontend noninteractive tzdata
+
 RUN mkdir -p /etc/nginx/conf.d
 RUN rm -f /etc/nginx/conf.d/default.conf
 
