@@ -1,19 +1,22 @@
-ralali_data:
-  image: website:0.1
+website_data:
+  container_name: website_data
+  image: website:2.0
 
 ralali_nginx:
-  image: nginx2:2.0
+  container_name: nginx
+  image: nginx:2.0
   ports:
     - "8000:8000"
   volumes_from:
-    - ralali_data
+    - website_data
   links:
-    - ralali_hhvm
+    - ralali_hhvm_build
 
-ralali_hhvm:
-  image: hhvm2:0.1
+ralali_hhvm_build:
+  container_name: hhvm
+  image: hhvm:2.0
   command: hhvm --mode server --config /etc/hhvm/hhvm.ini
   volumes_from:
-      - ralali_data
+      - website_data
 
 
