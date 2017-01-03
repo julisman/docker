@@ -2,7 +2,7 @@ mongodb:
   container_name: mongodb
   #command: --auth
   volumes:
-    - ./db:/data/db
+    - ./:/data
   image: mongo:3.2
   restart: always
   ports:

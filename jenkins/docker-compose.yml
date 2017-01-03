@@ -1,0 +1,11 @@
+jenkins:
+    container_name: jenkin
+    image: jenkinsci/jenkins
+    restart: always
+    ports:
+        - "8080:8080"
+    volumes:
+        - /var/jenkins_home:/var/jenkins_home:rw
+
+
+

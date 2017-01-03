@@ -7,10 +7,11 @@ RUN rm /etc/timezone \
        && chmod 644 /etc/timezone \
        && dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN mkdir -p /etc/nginx/conf.d \
-    && rm -f /etc/nginx/conf.d/default.conf
+RUN mkdir -p /etc/nginx/conf.d
+RUN rm -f /etc/nginx/conf.d/default.conf
 
 ADD nginx.conf /etc/nginx/
 ADD website.conf /etc/nginx/conf.d/website.conf
+ADD cms.conf /etc/nginx/conf.d/cms.conf
 
 EXPOSE 80 443
