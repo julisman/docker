@@ -1,9 +1,11 @@
-jenkins:
-    container_name: jenkin
+newjenkins:
+    container_name: newjenkins
     image: jenkinsci/jenkins
     restart: always
+    dns: 203.142.82.222
     ports:
-        - "8080:8080"
+        - "192.168.30.106:8080:8080"
+        - "192.168.30.106:50000:50000"
     volumes:
         - /var/jenkins_home:/var/jenkins_home:rw
 
