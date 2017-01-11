@@ -6,4 +6,3 @@ postgresql:
         - "5432:5432"
     volumes:
         - /etc/postgresql:/etc/postgresql:rw
-	
