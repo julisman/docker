@@ -8,3 +8,13 @@ nginx:
     volumes:
         - /var/www/html:/var/www/html:rw
         - /mnt/docker/nginx/conf.d:/etc/nginx/conf.d:rw
+    links:
+        - hhvm
+
+hhvm:
+  container_name: hhvm
+  image: hhvm:2.0
+  command: hhvm --mode server --config /etc/hhvm/hhvm.ini
+  volumes:
+      - /var/www/html:/var/www/html:rw
+
