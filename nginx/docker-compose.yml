@@ -13,7 +13,7 @@ nginx:
 
 hhvm:
   container_name: hhvm
-  image: hhvm:2.0
+  image: hhvm/hhvm
   command: hhvm --mode server --config /etc/hhvm/hhvm.ini
   volumes:
       - /var/www/html:/var/www/html:rw
