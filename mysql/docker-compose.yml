@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: changeit
+       MYSQL_DATABASE: changeit
+       MYSQL_USER: changeit
+       MYSQL_PASSWORD: changeit
+
+volumes:
+    db_data:
