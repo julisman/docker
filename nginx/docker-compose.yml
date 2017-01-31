@@ -13,7 +13,8 @@ nginx:
 
 hhvm:
   container_name: hhvm
-  image: hhvm/hhvm
+  restart: always
+  image: secret06/hhvm:2.0
   command: hhvm --mode server --config /etc/hhvm/hhvm.ini
   volumes:
       - /var/www/html:/var/www/html:rw
