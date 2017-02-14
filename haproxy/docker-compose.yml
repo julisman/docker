@@ -1,0 +1,12 @@
+haproxy:
+    container_name: haproxy
+    image: haproxy:1.7
+    #restart: always
+    ports:
+        - "80:80"
+        - "1936:1936"
+    volumes:
+        - /mnt/docker/haproxy:/usr/local/etc/haproxy:rw
+
+
+

@@ -16,8 +16,8 @@ services:
     links:
         - hhvm2
         - mysqldb
-    networks:
-        - be
+#    networks:
+#        - be
 
   hhvm2:
     container_name: hhvm2
@@ -26,8 +26,8 @@ services:
     command: hhvm --mode server --config /etc/hhvm/hhvm.ini
     volumes:
       - /var/www/html:/var/www/html:rw
-    networks:
-      - be
+#    networks:
+#      - be
   mysqldb:
     container_name: mysqldb
     image: mysql:5.7
@@ -37,8 +37,8 @@ services:
       - db_data:/var/lib/mysql:rw
       - /var/www/html/tmid/newcms:/var/bc
     restart: always
-    networks:
-          - be
+#    networks:
+#          - be
     environment:
       MYSQL_ROOT_PASSWORD: Tru3money
       MYSQL_DATABASE: tmw
@@ -48,7 +48,7 @@ services:
 volumes:
     db_data:
 
-networks:
-  be:
-    external:
-      name: dockerelk_docker_elk
+#networks:
+#  be:
+#    external:
+#      name: dockerelk_docker_elk

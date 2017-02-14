@@ -1,0 +1,14 @@
+nginxplus:
+    container_name: nginxplus
+    image: nginxplus:1.0
+    #restart: always
+
+    ports:
+        - "80:80"
+        - "8080:8080"
+    volumes:
+        - /var/log/nginxplus:/var/log/nginx:rw
+        - /mnt/docker/nginxplus/conf.d:/etc/nginx/conf.d:rw
+
+
+
