@@ -1,0 +1,11 @@
+prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v1.5.2
+    restart: always
+    ports:
+        - "9090:9090"
+    volumes:
+        - ./prometheusdata:/etc/prometheus:rw
+
+
+
