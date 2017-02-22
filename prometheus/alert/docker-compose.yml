@@ -1,0 +1,10 @@
+alertmanager:
+    container_name: alertmanager
+    image: prom/alertmanager:v0.5.0
+    restart: always
+    ports:
+        - "9093:9093"
+    volumes:
+        - ./alertmanagerdata:/etc/alertmanager:rw
+
+

@@ -1,11 +1,28 @@
-prometheus:
-    container_name: prometheus
-    image: prom/prometheus:v1.5.2
-    restart: always
-    ports:
-        - "9090:9090"
-    volumes:
-        - ./prometheusdata:/etc/prometheus:rw
+version: '2'
+
+services:
+
+  alertmanager:
+      container_name: alertmanager
+      image: prom/alertmanager:v0.5.0
+      restart: always
+      ports:
+          - "9093:9093"
+      volumes:
+          - ./alertmanagerdata:/etc/alertmanager:rw
+
+  prometheus:
+      container_name: prometheus
+      image: prom/prometheus:v1.5.2
+      links:
+       - alertmanager
+      command: -config.file=/etc/prometheus/prometheus.yml -alertmanager.url=http://alertmanager:9093
+      restart: always
+      ports:
+          - "9090:9090"
+      volumes:
+          - ./prometheusdata:/etc/prometheus:rw
 
 
 
+#curl -X POST http://localhost:9090/-/reload for reload config

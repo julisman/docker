@@ -1,0 +1,4 @@
+ALERT host_down
+  IF up == 0
+FOR 5s
+

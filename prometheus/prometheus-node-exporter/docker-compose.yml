@@ -1,0 +1,14 @@
+prometheus:
+    container_name: prometheus
+    image: prom/node-exporter:v0.13.0
+    restart: always
+    ports:
+        - "9100:9100"
+    volumes:
+        - /proc:/host/proc:rw
+        - /sys:/host/sys:rw
+        - /:/rootfs:rw
+
+
+
+#
