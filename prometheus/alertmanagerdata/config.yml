@@ -96,7 +96,7 @@ inhibit_rules:
 receivers:
 - name: 'devops'
   opsgenie_configs:
-    - api_key: <4212d335-a72c-4478-a8c6-5c0689516f49
+    - api_key: <api-key>
 
 
 
