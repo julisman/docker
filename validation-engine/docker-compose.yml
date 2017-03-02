@@ -1,6 +1,0 @@
-validation-engine:
-  container_name: validation-engine
-  image:  secret06/validation-engine-data:1.0
-  command : java -jar validation_engine-1.0.2-SNAPSHOT.jar
-  restart: on-failure
-

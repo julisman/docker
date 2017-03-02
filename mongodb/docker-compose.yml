@@ -1,9 +1,0 @@
-mongodb:
-  container_name: mongodb
-  #command: --auth
-  volumes:
-    - ./:/data
-  image: mongo:3.2
-  restart: always
-  ports:
-    - "27017:27017"
