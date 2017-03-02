@@ -2,5 +2,8 @@
      ```
      docker exec -ti consul apk update
      docker exec -ti consul apk add jq
-
+     docker-compose  scale http=5
      ```
+
+
+ 2. 
