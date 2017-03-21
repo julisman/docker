@@ -1,9 +1,9 @@
-http:
+app:
   image: tutum/hello-world:latest
   environment:
-    SERVICE_NAME: http
+    SERVICE_NAME: app
     SERVICE_TAGS: production
-    SERVICE_80_NAME: http
+    SERVICE_80_NAME: app
     SERVICE_80_CHECK_HTTP: /
     SERVICE_80_CHECK_INTERVAL: 15s
   ports:

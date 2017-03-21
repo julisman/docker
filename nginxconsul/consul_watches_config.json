@@ -5,7 +5,12 @@
   "watches": [
     {
       "type": "service",
-      "service": "http",
+      "service": "app",
+      "handler": "/tmp/script.sh"
+    },
+    {
+      "type": "service",
+      "service": "apiedc",
       "handler": "/tmp/script.sh"
     }
   ]
