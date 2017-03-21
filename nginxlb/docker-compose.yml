@@ -1,0 +1,50 @@
+
+
+consul:
+  container_name: consul
+  command: -server -bootstrap -ui-dir /ui
+  image: progrium/consul:latest
+  mem_limit: 128m
+  ports:
+    - "8300:8300"
+    - "8400:8400"
+    - "8500:8500"
+    - "8600:53/udp"
+  volumes:
+    - "./consul_watches_config.json:/etc/consul.d/config.json"
+    - "./script.sh:/tmp/script.sh"
+  environment:
+    - GOMAXPROCS=4
+    - HOST_IP=172.17.0.1
+
+registrator:
+  container_name: registrator
+  command: -internal consul://consul:8500 
+  image: gliderlabs/registrator:latest
+  links:
+    - consul
+  volumes:
+    - "/var/run/docker.sock:/tmp/docker.sock"
+
+app:
+  image: tutum/hello-world:latest
+  links:
+   - consul
+  environment:
+    SERVICE_NAME: app
+    SERVICE_TAGS: production
+    SERVICE_80_NAME: http
+    SERVICE_80_CHECK_HTTP: /
+    SERVICE_80_CHECK_INTERVAL: 15s
+  ports:
+   - "80"
+
+lb:
+  container_name: nginx
+  environment:
+    SERVICE_NAME: nginx
+  build: ./
+  links:
+    - consul
+  ports:
+    - "80:80"    

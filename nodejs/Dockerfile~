@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+MAINTAINER agung.julisman@yahoo.com
+
+RUN apt-get update
+RUN apt-get install git 
+
+RUN apt-get clean

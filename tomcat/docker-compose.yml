@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  tomcat:
+      container_name: tomcat
+      image: tomcat:8-alpine
+      restart: always
+      ports:
+          - "8080:8080"
+      
+
+  
