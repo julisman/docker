@@ -1,0 +1,67 @@
+---
+- hosts: staging
+  tasks: 
+  - name: Download Java JRE
+    get_url:
+      url: http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jre-8u60-linux-x64.rpm
+      dest: /opt/jre-8u60-linux-x64.rpm
+      headers: 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'
+
+  - name: install Java JRE rpm from a local file
+    yum:
+      name: /opt/jre-8u60-linux-x64.rpm
+      state: present
+
+
+  - name: Download Java	JDK
+    get_url:
+      url: http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
+      dest: /opt/jdk-8u60-linux-x64.rpm
+      headers: 'Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'
+
+
+  - name: Install Java JDK rpm from a local file
+    yum:
+      name: /opt/jdk-8u60-linux-x64.rpm
+      state: present
+
+
+  - name: install the latest version of Docker
+    yum:
+      name: docker
+      state: latest
+
+  - name: install docker-compose via source
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.11.2/docker-compose-Linux-x86_64
+      dest: /opt/docker-compose
+
+  - name: give permission to docker-compose
+    file:
+      path: /opt/docker-compose
+      mode: 775
+
+  - name: Copy docker-compose file to bin directory
+    file:
+      src: /opt/docker-compose
+      dest: /usr/bin/docker-compose
+      state: link
+
+  - name: install unzip
+    yum:
+      name: unzip
+      state: latest
+
+  - name: download and unzip apache maven
+    unarchive:
+      #src: http://mirror.wanxp.id/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
+      src: http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
+      dest: /opt/
+      remote_src: True
+
+  - name: copy apache maven to bin directory
+    file:
+      src: /opt/apache-maven-3.3.9/bin/mvn
+      dest: /usr/local/bin/mvn
+      mode: 775
+      state: link

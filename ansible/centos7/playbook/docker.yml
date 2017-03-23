@@ -1,0 +1,24 @@
+---
+- hosts: staging
+  tasks:
+  
+  - name: install the latest version of Docker
+    yum:
+      name: docker
+      state: latest
+
+  - name: install docker-compose via source
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.11.2/docker-compose-Linux-x86_64
+      dest: /opt/docker-compose
+
+  - name: give permission to docker-compose
+    file:
+      path: /opt/docker-compose
+      mode: 755
+
+  - name: Copy docker-compose file to bin directory
+    file:
+      src: /opt/docker-compose
+      dest: /usr/bin/docker-compose
+      state: link
