@@ -1,5 +1,7 @@
 ---
-- hosts: staging
+- hosts: pricebook-staging-pluto
+  become: yes
+  #connection: local
   tasks:
   
   - name: install the latest version of Docker
@@ -22,3 +24,5 @@
       src: /opt/docker-compose
       dest: /usr/bin/docker-compose
       state: link
+
+  - name: run docker engine
