@@ -25,4 +25,3 @@
       dest: /usr/bin/docker-compose
       state: link
 
-  - name: run docker engine
