@@ -4,8 +4,11 @@ services:
    db:
      container_name: mysql
      image: mysql:5.7
+     ports:
+       - "3306:3306"
      volumes:
        - db_data:/var/lib/mysql
+       - /Users/agungjulisman/Documents/docker/mysql/db_data/:/var/db_data:rw
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: changeit

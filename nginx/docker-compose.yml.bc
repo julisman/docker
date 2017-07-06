@@ -1,0 +1,21 @@
+nginx:
+    container_name: nginx
+    image: secret06/nginx
+    restart: always
+    ports:
+        - "8000:8000"
+        - "9000:9000"
+    volumes:
+        - /Users/agungjulisman/Documents/app:/var/www/html:z
+        - /Users/agungjulisman/Documents/conf.d:/etc/nginx/conf.d:z
+    links:
+        - hhvm
+
+hhvm:
+  container_name: hhvm
+  restart: always
+  image: secret06/hhvm:2.0
+  command: hhvm --mode server --config /etc/hhvm/hhvm.ini
+  volumes:
+      - /Users/agungjulisman/Documents/app:/var/www/html:z
+
