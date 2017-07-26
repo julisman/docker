@@ -1,7 +1,0 @@
-ALERT host_down
-  IF node_filesystem_avail{job="technetium.truemoney.co.id"}  > 1
-FOR 7s
-
-ALERT
-
-

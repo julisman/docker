@@ -1,5 +1,5 @@
 ---
-- hosts: aws-jenkinsbuild
+- hosts: AWS
   become: yes
   tasks: 
   - name: Download Java	JDK

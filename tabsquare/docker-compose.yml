@@ -1,0 +1,44 @@
+version: '2'
+services:
+   localservice_data:
+     container_name: localservice_data
+     image: secret06/localservice:v2.6.5-10
+     restart: always
+     tty: true
+
+   mysql:
+     container_name: mysql
+     image: mysql:v1.0.0
+     ports:
+       - "3306:3306"
+     volumes:
+       - db_data:/var/lib/mysql:rw
+     restart: always
+
+   nginx:
+    container_name: nginx
+    image: secret06/nginx
+    restart: always
+    ports:
+        - "8000:8000"
+        - "9000:9000"
+        - "7000:7000"
+
+    volumes_from:
+        - localservice_data:rw
+    volumes:
+        - /Users/agungjulisman/Documents/conf.d:/etc/nginx/conf.d:rw
+    links:
+        - hhvm
+        - mysql
+
+   hhvm:
+     container_name: hhvm
+     restart: always
+     image: secret06/hhvm:2.0
+     command: hhvm --mode server --config /etc/hhvm/hhvm.ini
+     volumes_from:
+        - localservice_data:rw
+
+volumes:
+    db_data:

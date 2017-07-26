@@ -8,17 +8,18 @@ services:
         - "8000:8000"
         - "9000:9000"
         - "7000:7000"
+        - "6000:6000"
     volumes:
         - /Users/agungjulisman/Documents/app:/var/www/html:rw
         - /Users/agungjulisman/Documents/conf.d:/etc/nginx/conf.d:rw
+        - /Users/agungjulisman/Documents/tes/nginx.conf:/etc/nginx/nginx.conf:rw
     links:
-        - hhvm
+        - fpm
 
-  hhvm:
-     container_name: hhvm
+  fpm:
+     container_name: fpm
      restart: always
-     image: secret06/hhvm:2.0
-     command: hhvm --mode server --config /etc/hhvm/hhvm.ini
+     image: php:7.1.0
      volumes:
         - /Users/agungjulisman/Documents/app:/var/www/html:z
 
