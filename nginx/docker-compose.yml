@@ -12,7 +12,7 @@ services:
     volumes:
         - /Users/agungjulisman/Documents/app:/var/www/html:rw
         - /Users/agungjulisman/Documents/conf.d:/etc/nginx/conf.d:rw
-        - /Users/agungjulisman/Documents/tes/nginx.conf:/etc/nginx/nginx.conf:rw
+#        - /Users/agungjulisman/Documents/tes/nginx.conf:/etc/nginx/nginx.conf:rw
     links:
         - fpm
 
