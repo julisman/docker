@@ -8,7 +8,7 @@ services:
 
    mysql:
      container_name: mysql
-     image: secret06/mysql:v1.1.0
+     image: secret06/mysql:v1.1.1
      ports:
        - "3306:3306"
      restart: always
@@ -31,6 +31,14 @@ services:
      image: secret06/php:7.1.1
      volumes_from:
         - localservice_data:rw
+
+   monitoring:
+     container_name: monitoring
+     restart: always
+     image: djenriquez/sherpa
+     command: --allow
+     ports:
+        - "2375:4550"
 
 volumes:
     db_data:
