@@ -9,6 +9,8 @@ services:
    mysql:
      container_name: mysql
      image: secret06/mysql:v1.1.2
+     volumes:
+            - .:/var/lib/mysql
      command: mysqld --innodb_buffer_pool_size=8G  --sql-mode=""
      ports:
        - "3306:3306"
