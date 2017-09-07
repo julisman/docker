@@ -37,6 +37,8 @@ services:
      restart: always
      image: djenriquez/sherpa
      command: --allow
+     volumes:
+        - "/var/run/docker.sock:/tmp/docker.sock"
      ports:
         - "2375:4550"
 
