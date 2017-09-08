@@ -10,7 +10,7 @@ services:
      container_name: mysql
      image: secret06/mysql:v1.1.2
      volumes:
-            - .:/var/lib/mysql
+       - db_data:/var/lib/mysql
      command: mysqld --innodb_buffer_pool_size=8G  --sql-mode=""
      ports:
        - "3306:3306"
@@ -45,5 +45,24 @@ services:
      ports:
         - "2375:4550"
 
+   #integerationserver:
+     #container_name: integerationserver
+     #image: integerationserver:v1.0.0
+     #tty: true
+     #volumes_from:
+       # - localservice_data:rw
+     #links:
+        #- mysql
+   integerationservice:
+        container_name: integerationservice
+        image: mono:latest
+        volumes:
+          - "./integeration:/var/integerationservice:rw"
+        volumes_from:
+           - localservice_data:rw
+        tty: true
+        command: mono /var/integerationservice/IntegrationServer.exe
+        links:
+          - mysql
 volumes:
     db_data:
