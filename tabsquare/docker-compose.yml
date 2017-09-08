@@ -45,23 +45,13 @@ services:
      ports:
         - "2375:4550"
 
-   #integerationserver:
-     #container_name: integerationserver
-     #image: integerationserver:v1.0.0
-     #tty: true
-     #volumes_from:
-       # - localservice_data:rw
-     #links:
-        #- mysql
    integerationservice:
         container_name: integerationservice
-        image: mono:latest
-        volumes:
-          - "./integeration:/var/integerationservice:rw"
+        image: secret06/integerationservice:v1.0.1
         volumes_from:
            - localservice_data:rw
+        command: mono /var/integerationservice/IntegrationServer.exe 588175c960ff1
         tty: true
-        command: mono /var/integerationservice/IntegrationServer.exe
         links:
           - mysql
 volumes:
