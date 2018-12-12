@@ -1,0 +1,29 @@
+version: '2'
+services:
+
+  nginx:
+    image: nginx
+    volumes:
+      - "./etc/nginx/conf.d/:/etc/nginx/conf.d/"
+    environment:
+      VIRTUAL_HOST: myafin.com
+      LETSENCRYPT_HOST: myafin.com
+      LETSENCRYPT_EMAIL: myafin@example.com
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./nginx/vhost.d:/etc/nginx/vhost.d"
+      - "./nginx/html:/usr/share/nginx/html"
+      - "./nginx/certs:/etc/nginx/certs"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx-proxy"

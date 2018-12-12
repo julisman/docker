@@ -1,0 +1,10 @@
+version: '2'
+services:
+  secret06kalilinux:
+      container_name: secret06kalilinux
+      image: secret06/kalilinux:0.3
+      network_mode: host
+      privileged: true
+      command: tail -f /dev/null
+      volumes:
+        - ./capt:/home:rw
